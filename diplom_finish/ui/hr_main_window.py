@@ -1,6 +1,6 @@
 from PyQt6 import QtWidgets, QtCore
 import pymysql
-from db.db import get_connection
+from db.db import get_connection_for_auth
 
 class HRMainWindow(QtWidgets.QMainWindow):
     def __init__(self, user_id):
@@ -118,8 +118,8 @@ class Ui_HRMainWindow(object):
         self.dashboard_cards.append(card)
 
     def load_dashboard_data(self):
+        conn = get_connection_for_auth()
         try:
-            conn = get_connection()
             cursor = conn.cursor()
             cursor.execute("SELECT COUNT(*) FROM employees WHERE is_active=1")
             employee_count = cursor.fetchone()[0]
