@@ -6,7 +6,7 @@ def get_connection():
         host="localhost",
         user="root",
         password="",
-        database="diplom",
+        database="hr_intagration",
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True,
         port=3312
@@ -16,7 +16,7 @@ def get_connection_for_auth():
         host="localhost",
         user="root",
         password="",
-        database="diplom",
+        database="hr_intagration",
         autocommit=True,
         port=3312
     )
