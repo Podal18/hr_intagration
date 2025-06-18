@@ -1,5 +1,6 @@
 from PyQt6 import QtWidgets, QtCore
 import pymysql
+from db.db import get_connection
 
 class HRMainWindow(QtWidgets.QMainWindow):
     def __init__(self, user_id):
@@ -118,7 +119,7 @@ class Ui_HRMainWindow(object):
 
     def load_dashboard_data(self):
         try:
-            conn = pymysql.connect(host='localhost', user='root', password='', database='diplom', port=3312, charset='utf8mb4')
+            conn = get_connection()
             cursor = conn.cursor()
             cursor.execute("SELECT COUNT(*) FROM employees WHERE is_active=1")
             employee_count = cursor.fetchone()[0]
